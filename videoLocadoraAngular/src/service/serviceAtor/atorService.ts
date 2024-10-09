@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';  // Certifique-se de que os tipos de retorno 
   providedIn: 'root'
 })
 export class AtorService {
-  private apiUrl = 'http://localhost:3000/ator';  // Defina a URL da API
+  private apiUrl = 'http://localhost:4200/api/ator';  // Defina a URL da API
 
   constructor(private http: HttpClient) {}
 

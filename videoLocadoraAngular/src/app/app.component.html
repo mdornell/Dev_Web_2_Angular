@@ -22,45 +22,9 @@
 </header>
 
 <main>
-    <!-- Formulario -->
-    <section class="container mb-4 mt-5">
-        <div class="card container">
-            <div class="card-body">
-                <h5 class="card-title">Adicionar Ator</h5>
-                <form [formGroup]="form">
-                    <div class="mb-3">
-                        <label for="nome" class="form-label">Nome:</label>
-                        <input type="text" class="form-control" formControlName="nome" required>
-                    </div>
-                    <button (click)="salvar()" class="btn btn-primary">Inserir</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Tabela -->
-    <section class="container mt-5">
-        <div class="table-responsive">
-            <table class="table table-bordered table-hover">
-                <thead class="table-dark">
-                    <tr>
-                        <th>Nome</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Maria Oliveira</td>
-                        <td>
-                            <button class="btn btn-primary btn-sm">Editar</button>
-                            <button class="btn btn-danger btn-sm">Excluir</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
+    <router-outlet></router-outlet>
 </main>
+
 
 <footer>
 
