@@ -2,43 +2,28 @@ package com.videoLocadora.domain.controle_acervo;
 
 import java.util.Date;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.Data;
+
+@Data
+@Entity
 public class Item {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false)
     private int numSerie;
+
+    @Column(nullable = false)
     private Date dataAquisicao;
+
+    @Column(nullable = false)
     private String tipoItem;
-
-    public Item() {
-    }
-
-    public Item(int numSerie, Date dataAquisicao, String tipoItem) {
-        this.numSerie = numSerie;
-        this.dataAquisicao = dataAquisicao;
-        this.tipoItem = tipoItem;
-    }
-
-    public int getNumSerie() {
-        return numSerie;
-    }
-
-    public void setNumSerie(int numSerie) {
-        this.numSerie = numSerie;
-    }
-
-    public Date getDataAquisicao() {
-        return dataAquisicao;
-    }
-
-    public void setDataAquisicao(Date dataAquisicao) {
-        this.dataAquisicao = dataAquisicao;
-    }
-
-    public String getTipoItem() {
-        return tipoItem;
-    }
-
-    public void setTipoItem(String tipoItem) {
-        this.tipoItem = tipoItem;
-    }
-
-    
+ 
 }
