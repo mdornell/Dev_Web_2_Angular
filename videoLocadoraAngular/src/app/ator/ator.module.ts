@@ -1,6 +1,5 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { NgModule } from '@angular/core';
 import { AtorRoutingModule } from './ator-routing.module';
 
 
@@ -8,7 +7,7 @@ import { AtorRoutingModule } from './ator-routing.module';
   declarations: [],
   imports: [
     CommonModule,
-    AtorRoutingModule
+    AtorRoutingModule,
   ]
 })
 export class AtorModule { }

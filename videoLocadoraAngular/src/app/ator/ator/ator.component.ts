@@ -1,43 +1,88 @@
+import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { AtorService } from '../../../service/serviceAtor/atorService';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
+import { ActivatedRoute, Router } from '@angular/router';
+import { catchError, Observable, of } from 'rxjs';
 import { Ator } from '../model/ator';
+import { AtorService } from '../services/ator.service';
+
 
 @Component({
     selector: 'app-ator',
     standalone: true,
     imports: [
-        ReactiveFormsModule,
-        MatTableModule
+        MatTableModule,
+        MatButtonModule,
+        MatSortModule,
+        MatProgressSpinnerModule,
+        MatCardModule,
+        MatIconModule,
+        NgIf,
+        NgFor,
+        AsyncPipe
     ],
     templateUrl: './ator.component.html',
     styleUrl: './ator.component.scss'
 })
 export class AtorComponent {
 
-    form: FormGroup;
-    atores: Ator[] = [
-        { _id: 1, nome: 'Tom Cruise' },
-        { _id: 2, nome: 'Brad Pitt' },
-    ];
-    displayedColumns = ['_id','nome'];
+    atores$: Observable<Ator[]>;
+    displayedColumns = ['_id', 'nome', 'acoes'];
+    atorIdParaDeletar: number | null  = null;
 
-    constructor(private formBuilder: FormBuilder, private atorService: AtorService) {
-        this.form = this.formBuilder.group({
-            _id: [0],
-            nome: [''],
-        });
+    constructor(
+        private atorService: AtorService,
+        private router: Router,
+        private route: ActivatedRoute
+    ) {
+        this.atores$ = this.atorService.list().pipe(
+            catchError(error => {
+                console.log('Erro ao carregar a lista de atores');
+                return of([]);
+            })
+        );
     }
 
-    salvar() {
-        this.atorService.salvar(this.form.value).subscribe(() => {
-            console.log('Ator salvo com sucesso');
-        });
-        this.atores = []
+    ngOnInit(): void { }
+
+    onAdd(): void {
+        this.router.navigate(['new'], { relativeTo: this.route });
     }
 
-    ngOnInit(): void {
-
+    onEdit(ator: Ator) {
+        this.router.navigate(['edit', ator._id], { relativeTo: this.route });
     }
+
+    // Abrir o modal e definir o ID do ator a ser deletado
+    openDeleteModal(id: number): void {
+        this.atorIdParaDeletar = id;
+        const modal = document.getElementById('deleteModal');
+        if (modal) {
+            modal.classList.add('show');
+            modal.style.display = 'block';
+        }
+    }
+
+    // Confirmar e deletar o ator
+    onDelete(): void {
+        const modal = document.getElementById('deleteModal');
+        if (this.atorIdParaDeletar) {
+            this.atorService.delete(this.atorIdParaDeletar).subscribe(() => {
+                this.atores$ = this.atorService.list();
+            });
+            this.atorIdParaDeletar = null; // Resetar o ID após a exclusão
+        }
+        if (modal) {
+            modal.classList.remove('show');
+            modal.style.display = 'none';
+        }
+    }
+
+    
+
 }
