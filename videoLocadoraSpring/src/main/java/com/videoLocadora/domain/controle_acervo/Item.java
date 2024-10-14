@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.Data;
 
 @Data
@@ -20,10 +22,14 @@ public class Item {
     @Column(nullable = false)
     private int numSerie;
 
-    @Column(nullable = false)
+    @Column
     private Date dataAquisicao;
 
-    @Column(nullable = false)
+    @Column
     private String tipoItem;
+
+    @ManyToOne
+    @JoinColumn(name = "idTitulo")
+    private Titulo titulo;
  
 }

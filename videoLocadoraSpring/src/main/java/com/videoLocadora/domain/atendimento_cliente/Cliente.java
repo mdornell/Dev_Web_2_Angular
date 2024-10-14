@@ -1,16 +1,21 @@
 package com.videoLocadora.domain.atendimento_cliente;
 
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+import jakarta.persistence.OneToMany;
 import lombok.Data;
 
 @Data
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Cliente {
 
     @Id
@@ -23,12 +28,15 @@ public class Cliente {
     @Column(length = 255, nullable = false)
     private String nome;
 
-    @Column(nullable = false)
+    @Column
     private Date dataNascimento;
 
-    @Column(nullable = false)
+    @Column
     private char sexo;
     
     @Column(nullable = false)
     private boolean estaAtivo;
+
+    @OneToMany(mappedBy = "cliente")
+    private List<Locacao> locacoes;
 }

@@ -18,7 +18,8 @@ public class DiretorController {
     
     private final DiretorRepository diretorRepository;
 
-    @GetMapping
+    // Lista todos os diretores
+    @GetMapping("/listar")
     public List<Diretor> listarDiretores() {
         return diretorRepository.findAll();
     }
