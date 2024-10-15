@@ -1,7 +1,32 @@
-<mat-toolbar>
-    <div class="container">
-        <div class="content-container">
-            <div class="title">Video Locadora</div>
+<header>
+    <mat-toolbar color="primary" class="d-flex justify-content-between align-items-center">
+        <!-- Botão de menu usando Angular Material -->
+        <button mat-icon-button [matMenuTriggerFor]="appMenu" class="btn btn-dark">
+            <mat-icon class="mt-1">more_vert</mat-icon>
+        </button>
+
+        <mat-menu #appMenu="matMenu">
+            <button mat-menu-item>Diretor</button>
+            <button mat-menu-item>Classe</button>
+        </mat-menu>
+
+        <!-- Centralizar o título com Bootstrap -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="text-center text-white">Video Locadora</h1>
+                </div>
+            </div>
         </div>
-    </div>
-</mat-toolbar>
+    </mat-toolbar>
+</header>
+
+<main>
+    <router-outlet></router-outlet>
+
+    
+</main>
+
+<footer>
+
+</footer>

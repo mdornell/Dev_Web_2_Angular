@@ -1,12 +1,28 @@
+import { HttpClientModule } from '@angular/common/http'; // Importa o HttpClientModule
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, MatToolbarModule],
+  imports: [
+    RouterOutlet,
+    MatToolbarModule,
+    MatMenuModule,
+    MatIconModule,
+    ReactiveFormsModule,
+    HttpClientModule,  
+  ],
+  providers: [],  // Providencie o serviço no próprio componente autônomo
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss']
 })
-export class AppComponent {}
+export class AppComponent {
+
+  constructor() {
+  }
+}
