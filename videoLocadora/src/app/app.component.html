@@ -1,0 +1,38 @@
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark d-flex justify-content-between align-items-center">
+        <div class="container">
+
+            <!-- Centralizar o título -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="text-left text-white mt-2 mb-2 pt-3">Video Locadora</h3>
+                    </div>z
+                </div>
+            </div>
+
+            <!-- Menu lateral -->
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['ator']">Ator</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['diretor']">Diretor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['classe']">Classe</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <router-outlet></router-outlet>
+</main>
+
+<footer>
+
+</footer>
