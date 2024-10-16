@@ -59,8 +59,8 @@ export class AtorComponent {
     }
 
     // Abrir o modal e definir o ID do ator a ser deletado
-    openDeleteModal(id: number): void {
-        this.atorIdParaDeletar = id;
+    onOpenModal(ator: Ator): void {
+        this.atorIdParaDeletar = ator._id;
         const modal = document.getElementById('deleteModal');
         if (modal) {
             modal.classList.add('show');
@@ -68,19 +68,23 @@ export class AtorComponent {
         }
     }
 
-    // Confirmar e deletar o ator
-    onDelete(): void {
+    onCloseModal(){
         const modal = document.getElementById('deleteModal');
-        if (this.atorIdParaDeletar) {
-            this.atorService.delete(this.atorIdParaDeletar).subscribe(() => {
-                this.atores$ = this.atorService.list();
-            });
-            this.atorIdParaDeletar = null; // Resetar o ID após a exclusão
-        }
         if (modal) {
             modal.classList.remove('show');
             modal.style.display = 'none';
         }
+    }
+
+    // Confirmar e deletar o ator
+    onDelete(): void {
+        if (this.atorIdParaDeletar) {
+            this.atorService.remove(this.atorIdParaDeletar).subscribe(() => {
+                this.atores$ = this.atorService.list();
+            });
+            this.atorIdParaDeletar = null; // Resetar o ID após a exclusão
+        }
+        this.onCloseModal();
     }
 
     

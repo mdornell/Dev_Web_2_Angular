@@ -31,7 +31,7 @@
                                 <button class="btn btn-sm btn-primary" (click)="onEdit(element)" aria-label="Editar um Ator">
                                     <i class="bi bi-pencil-square"></i>
                                 </button>
-                                <button class="btn btn-sm btn-danger ml-2" (click)="openDeleteModal(element._id)" aria-label="Remover um Ator" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                <button class="btn btn-sm btn-danger ml-2" (click)="onOpenModal(element)" aria-label="Remover um Ator" data-bs-toggle="modal" data-bs-target="#deleteModal">
                                     <i class="bi bi-trash"></i>
                                 </button>
                             </td>
@@ -62,7 +62,7 @@
                     Tem certeza que deseja excluir este ator?
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="onCloseModal()">Cancelar</button>
                     <button type="button" class="btn btn-danger" (click)="onDelete()">Excluir</button>
                 </div>
             </div>

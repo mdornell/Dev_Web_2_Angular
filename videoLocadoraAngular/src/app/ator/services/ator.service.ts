@@ -40,7 +40,7 @@ export class AtorService {
         return this.httpCliente.post<Ator>(this.urlAtor + '/add', record).pipe(take(1));
     }
 
-    delete(id: number) {
+    remove(id: number) {
         return this.httpCliente.delete(this.urlAtor + '/delete/' + id).pipe(take(1));
     }
 }
