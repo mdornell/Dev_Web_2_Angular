@@ -1,4 +1,4 @@
-import { Location } from '@angular/common';
+import { Location, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -12,6 +12,7 @@ import { AtorService } from '../services/ator.service';
     standalone: true,
     imports: [
         ReactiveFormsModule,
+        NgIf
     ],
     templateUrl: './ator-form.component.html',
     styleUrl: './ator-form.component.scss'
@@ -39,14 +40,23 @@ export class AtorFormComponent implements OnInit {
             _id: ator._id,
             nome: ator.nome
         });
+
+        // this.form = this.formBuilder.group({
+        //     nome: ['', [Validators.required, Validators.minLength(3)]]
+        //   });
     };
 
     onSubmit() {
-        this.service.save(this.form.value)
+        if (this.form.valid) {
+            this.service.save(this.form.value)
             .subscribe(
                 result => this.onSuccess(),
                 error => this.onErro()
             );
+        } else {
+            this.snackBar.open('Formulario Invalido', 'X', { duration: 5000 });
+        }
+        
     }
 
 
