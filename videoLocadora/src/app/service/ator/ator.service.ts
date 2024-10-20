@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { take, tap } from 'rxjs';
+import { take } from 'rxjs';
 import { Ator } from '../../type/ator';
 
 @Injectable({
@@ -13,11 +13,7 @@ export class AtorService {
     constructor(private httpCliente: HttpClient) { }
 
     list() {
-        return this.httpCliente.get<Ator[]>(this.urlAtor + '/list')
-            .pipe(
-                take(1),
-                tap(atores => console.log(atores))
-            )
+        return this.httpCliente.get<Ator[]>(this.urlAtor + '/list');
     }
 
     listById(id: number) {
@@ -26,10 +22,8 @@ export class AtorService {
 
     save(record: Partial<Ator>) {
         if (record._id) {
-            console.log("Atualizando : " + record);
             return this.update(record);
         }
-        console.log("Criando : " + record);
         return this.create(record);
     }
 
@@ -41,7 +35,7 @@ export class AtorService {
         return this.httpCliente.put(this.urlAtor + '/update/' + record._id, record).pipe(take(1));
     }
 
-    remove(id: number) {
-        return this.httpCliente.delete(this.urlAtor + '/delete/' + id).pipe(take(1));
+    remove(record: Ator) {
+        return this.httpCliente.delete(this.urlAtor + '/delete/' + record._id).pipe(take(1));
     }
 }

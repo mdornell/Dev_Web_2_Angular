@@ -1,5 +1,5 @@
 import { NgFor, NgIf } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Ator } from '../../../type/ator';
 
@@ -16,6 +16,7 @@ import { Ator } from '../../../type/ator';
 export class AtorListComponent {
 
     @Input() atores: Ator[] = []
+    @Output() atorSelected: EventEmitter<Ator> = new EventEmitter<Ator>();
 
     constructor(
         private router: Router,
@@ -31,5 +32,9 @@ export class AtorListComponent {
 
     onEdit(ator: Ator) {
         this.router.navigate(['edit', ator._id], { relativeTo: this.route });
+    }
+
+    onSelected(ator: Ator) {
+        this.atorSelected.emit(ator);
     }
 }
