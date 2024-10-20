@@ -9,8 +9,6 @@ import { DiretorResolver } from './guards/diretor/diretor.resolver';
 
 export const routes: Routes = [
 
-    { path: '', redirectTo: 'ator', pathMatch: 'full' },
-
     // Paths Ator
     { path: 'ator', component: AtorComponent },
     { path: 'ator/new', component: AtorFormComponent, resolve: { ator: AtorResolver } },
@@ -18,8 +16,8 @@ export const routes: Routes = [
 
     // Paths Diretor
     { path: 'diretor', component: DiretorComponent },
-    { path: 'diretor/new', component: DiretorFormComponent, resolve: { ator: DiretorResolver } },
-    { path: 'diretor/edit/:id', component: DiretorFormComponent, resolve: { ator: DiretorResolver } },
+    { path: 'diretor/new', component: DiretorFormComponent, resolve: { diretor: DiretorResolver } },
+    { path: 'diretor/edit/:id', component: DiretorFormComponent, resolve: { diretor: DiretorResolver } },
 
     // Paths Classe
     { path: 'classe', component: ClasseComponent },
