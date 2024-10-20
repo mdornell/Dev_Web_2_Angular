@@ -8,6 +8,7 @@ import { Ator } from '../../type/ator';
     providedIn: 'root'
 })
 export class AtorResolver implements Resolve<Ator> {
+    
     constructor(private service: AtorService) {}
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Ator> {

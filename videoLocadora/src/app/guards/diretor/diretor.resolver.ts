@@ -9,6 +9,7 @@ import { Diretor } from "../../type/diretor";
     providedIn: 'root'
 })
 export class DiretorResolver implements Resolve<Diretor> {
+    
     constructor(private service: DiretorService) {}
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Diretor> {
