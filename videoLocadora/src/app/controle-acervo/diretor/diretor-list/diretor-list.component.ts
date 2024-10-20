@@ -15,7 +15,7 @@ import { Diretor } from '../../../type/diretor';
 })
 export class DiretorListComponent {
     
-    @Input() diretores: Diretor[] = []
+    @Input() diretores: Diretor[] = [];
 
     constructor(
         private router: Router,
