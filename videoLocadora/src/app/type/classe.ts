@@ -1,5 +1,6 @@
 export interface Classe {
     _id: number;
     nome: string;
-    prazoDevolucao: Date;
+    valor: number;
+    prazoDeDevolucao: Date;
 }
