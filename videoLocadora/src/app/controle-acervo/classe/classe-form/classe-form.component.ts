@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClasseService } from '../../../service/classe/classe.service';
+import { ToISOFormat } from '../../../util/FormatDate';
 
 @Component({
     selector: 'app-classe-form',
@@ -24,24 +25,26 @@ export class ClasseFormComponent {
         private router: Router,
         private route: ActivatedRoute,
         private location: Location,
-        private snackBar: MatSnackBar
+        private snackBar: MatSnackBar,
     ) {
         this.form = this.fb.group({
             _id: [0],
             nome: [''],
             valor: [0,0],
-            dataDeDevolucao: ["dd/mm/aaaa"]
+            dataDeDevolucao: ["yyyy-MM-dd"]
         });
      }
 
      ngOnInit(): void {
         const classe = this.route.snapshot.data['classe'];
+
         this.form.setValue({
             _id: classe._id,
             nome: classe.nome,
             valor: classe.valor,
-            dataDeDevolucao: classe.dataDeDevolucao 
+            dataDeDevolucao: ToISOFormat(classe.dataDeDevolucao)
         });
+        
     }
 
     onSubmit() {
@@ -70,4 +73,5 @@ export class ClasseFormComponent {
     onErro() {
         this.snackBar.open('Erro ao salvar o registro', '', { duration: 5000 });
     }
+
 }

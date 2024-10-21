@@ -3,28 +3,29 @@ import { Injectable } from '@angular/core';
 import { take, tap } from 'rxjs';
 import { Classe } from '../../type/classe';
 
+
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class ClasseService {
 
     private apiUrl = '/api/classe';
 
-    constructor(private http: HttpClient) {}
-  
+    constructor(private http: HttpClient) { }
+
     list() {
         return this.http.get<Classe[]>(this.apiUrl + '/list')
-        .pipe(
-            take(1),
-            tap(classes => console.log(classes))
-        );
+            .pipe(
+                take(1),
+                tap(classes => console.log(classes))
+            );
     }
 
     listById(id: number) {
         return this.http.get<Classe>(this.apiUrl + '/list/' + id).pipe(take(1));
     }
 
-    save(record: Partial<Classe>) {
+    save(record: Partial<Classe>) { 
         if (record._id) {
             return this.update(record);
         }
