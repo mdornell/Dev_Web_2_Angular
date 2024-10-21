@@ -5,7 +5,8 @@
             <h3 class="text-center fw-bold ">Gestão de Diretores</h3>
         </div>
         <div class="card">
-            <app-diretor-list *ngIf="diretores$ | async as diretores; else loading" [diretores]="diretores">
+            <app-diretor-list *ngIf="diretores$ | async as diretores; else loading" [diretores]="diretores"
+                (selected)="onSelected($event)">>
             </app-diretor-list>
             <ng-template #loading>
                 <div class="d-flex justify-content-center mt-3 mb-3">
@@ -29,7 +30,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-danger">Excluir</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="onDelete()">Excluir</button>
                 </div>
             </div>
         </div>

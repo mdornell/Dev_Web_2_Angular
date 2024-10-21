@@ -1,5 +1,5 @@
 import { NgFor, NgIf } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Diretor } from '../../../type/diretor';
 
@@ -16,6 +16,7 @@ import { Diretor } from '../../../type/diretor';
 export class DiretorListComponent {
     
     @Input() diretores: Diretor[] = [];
+    @Output()  selected: EventEmitter<Diretor> = new EventEmitter<Diretor>;
 
     constructor(
         private router: Router,
@@ -31,5 +32,9 @@ export class DiretorListComponent {
 
     onEdit(diretor: Diretor) {
         this.router.navigate(['edit', diretor._id], { relativeTo: this.route });
+    }
+
+    onSelected(diretor: Diretor) {
+        this.selected.emit(diretor);
     }
 }

@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { DiretorService } from '../../service/diretor/diretor.service';
+
 import { Diretor } from '../../type/diretor';
 import { DiretorListComponent } from './diretor-list/diretor-list.component';
 
@@ -19,6 +20,7 @@ import { DiretorListComponent } from './diretor-list/diretor-list.component';
 export class DiretorComponent {
 
     diretores$: Observable<Diretor[]>;
+    selected: Diretor | null = null;
 
     constructor(
         private router: Router,
@@ -29,5 +31,19 @@ export class DiretorComponent {
     }
 
     ngOnInit() {
+    }
+
+    onSelected(diretor: Diretor) {
+        this.selected = diretor;
+    }
+
+    onDelete() {
+        if (this.selected?._id) {
+            this.diretorService.remove(this.selected._id).
+                subscribe(() => {
+                    this.diretores$ = this.diretorService.list();
+                });
+        }
+        this.selected = null;
     }
 }
