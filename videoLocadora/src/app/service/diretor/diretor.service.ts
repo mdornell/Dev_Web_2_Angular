@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { take, tap } from 'rxjs';
+import { take } from 'rxjs';
 import { Diretor } from '../../type/diretor';
 
 @Injectable({
@@ -16,7 +16,7 @@ export class DiretorService {
         return this.httpCliente.get<Diretor[]>(this.urlDiretor + '/list')
             .pipe(
                 take(1),
-                tap(diretores => console.log(diretores))
+                // tap(diretores => console.log(diretores))
             )
     }
 

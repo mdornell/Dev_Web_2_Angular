@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { take, tap } from 'rxjs';
+import { take } from 'rxjs';
 import { Classe } from '../../type/classe';
 
 
@@ -17,7 +17,7 @@ export class ClasseService {
         return this.http.get<Classe[]>(this.apiUrl + '/list')
             .pipe(
                 take(1),
-                tap(classes => console.log(classes))
+                // tap(classes => console.log(classes))
             );
     }
 
