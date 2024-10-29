@@ -6,23 +6,45 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h3 class="text-left text-white mt-2 mb-2 pt-3">Video Locadora</h3>
-                    </div>z
+                        <h3 class="my-1 p-2 text-left">
+                            <a class="text-white text-decoration-none" [routerLink]="['/']">Vídeo Locadora</a>
+                        </h3>
+                    </div>
                 </div>
             </div>
 
             <!-- Menu lateral -->
             <div class="collapse navbar-collapse" id="navbarMenu">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['ator']">Ator</a>
+
+                    <!-- Dropdown Controle de Acervo -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="controleAcervoDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Controle de Acervo
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="controleAcervoDropdown">
+                            <li><a class="dropdown-item" [routerLink]="['ator']">Ator</a></li>
+                            <li><a class="dropdown-item" [routerLink]="['diretor']">Diretor</a></li>
+                            <li><a class="dropdown-item" [routerLink]="['classe']">Classe</a></li>
+                            <li><a class="dropdown-item" [routerLink]="['titulo']">Título</a></li>
+                            <li><a class="dropdown-item" [routerLink]="['item']">Item</a></li>
+                        </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['diretor']">Diretor</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['classe']">Classe</a>
-                    </li>
+
+                    <!-- Dropdown Atendimento ao Cliente -->
+                    <!-- <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="atendimentoClienteDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Atendimento ao Cliente
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="atendimentoClienteDropdown">
+                            <li><a class="dropdown-item" [routerLink]="['cliente']">Cliente</a></li>
+                            <li><a class="dropdown-item" [routerLink]="['locacao']">Locação</a></li>
+                            <li><a class="dropdown-item" [routerLink]="['socio']">Sócio</a></li>
+                            <li><a class="dropdown-item" [routerLink]="['dependente']">Dependente</a></li>
+                        </ul>
+                    </li> -->
+
                 </ul>
             </div>
         </div>
@@ -34,5 +56,11 @@
 </main>
 
 <footer>
-
+    <!-- <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p class="text-center my-1 p-2">Desenvolvido por <a href="">Marco Dornel</a>
+            </div>
+         </div>
+    </div> -->
 </footer>

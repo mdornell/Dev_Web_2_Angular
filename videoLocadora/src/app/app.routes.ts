@@ -5,6 +5,9 @@ import { ClasseFormComponent } from './controle-acervo/classe/classe-form/classe
 import { ClasseComponent } from './controle-acervo/classe/classe.component';
 import { DiretorFormComponent } from './controle-acervo/diretor/diretor-form/diretor-form.component';
 import { DiretorComponent } from './controle-acervo/diretor/diretor.component';
+import { ItemComponent } from './controle-acervo/item/item.component';
+import { TituloFormComponent } from './controle-acervo/titulo/titulo-form/titulo-form.component';
+import { TituloComponent } from './controle-acervo/titulo/titulo.component';
 import { AtorResolver } from './guards/ator/ator.resolver';
 import { ClasseResolver } from './guards/classe/classe.resolver';
 import { DiretorResolver } from './guards/diretor/diretor.resolver';
@@ -26,4 +29,11 @@ export const routes: Routes = [
     { path: 'classe/new', component: ClasseFormComponent, resolve: { classe: ClasseResolver } },
     { path: 'classe/edit/:id', component: ClasseFormComponent, resolve: { classe: ClasseResolver } },
 
+    // Path Item
+    { path: 'item', component: ItemComponent },
+
+    // Path Titulo
+    { path: 'titulo', component: TituloComponent },
+    { path: 'titulo/new', component: TituloFormComponent },
+    { path: 'titulo/edit/:id', component: TituloFormComponent },
 ];
