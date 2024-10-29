@@ -4,7 +4,6 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClasseService } from '../../../service/classe/classe.service';
-import { ToISOFormat } from '../../../util/FormatDate';
 
 @Component({
     selector: 'app-classe-form',
@@ -31,18 +30,17 @@ export class ClasseFormComponent {
             _id: [0],
             nome: [''],
             valor: [0,0],
-            dataDeDevolucao: ["yyyy-MM-dd"]
+            prazoDeDevolucao: ["dd-MM-yyyy"]
         });
      }
 
      ngOnInit(): void {
         const classe = this.route.snapshot.data['classe'];
-
         this.form.setValue({
             _id: classe._id,
             nome: classe.nome,
             valor: classe.valor,
-            dataDeDevolucao: ToISOFormat(classe.dataDeDevolucao)
+            prazoDeDevolucao: classe.prazoDeDevolucao
         });
         
     }
