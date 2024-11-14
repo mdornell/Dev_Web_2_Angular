@@ -1,0 +1,37 @@
+<div *ngIf="itens as titulos">
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <!-- Definir colunas com largura proporcional ao conteúdo -->
+                    <th scope="col" class="col-3">Nº</th>
+                    <th scope="col" class="col-2 text-center">Aquisição</th>
+                    <th scope="col" class="col-4 text-center">Tipo</th>
+                    <!-- <th scope="col" class="col-3 text-center">Titulo</th> -->
+                    <th scope="col" class="col-2 text-center">
+                        <button class="btn btn-sm btn-success px-4" (click)="onAdd()" aria-label="Adicionar um Item">
+                            <i class="bi bi-person-plus"></i>
+                        </button>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let element of itens">
+                    <td class="col-3">{{ element.numSerie }}</td>
+                    <td class="col-1 text-center">{{ element.dtAquisicao }}</td>
+                    <td class="col-4">{{ element.tipoItem }}</td>
+                    <!-- <td class="col-3">{{ element.titulo.nome }}</td> -->
+                    <td class="col d-flex justify-content-center gap-2">
+                        <button class="btn btn-sm btn-primary" (click)="onEdit(element)" aria-label="Editar um Titulo">
+                            <i class="bi bi-pencil-square"></i>
+                        </button>
+                        <button type="button" class="btn btn-sm btn-danger" aria-label="Remover um Titulo"
+                            data-bs-toggle="modal" data-bs-target="#deleteModal" (click)="onSelected(element)">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

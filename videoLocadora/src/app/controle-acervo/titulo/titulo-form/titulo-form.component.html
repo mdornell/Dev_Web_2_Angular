@@ -38,7 +38,7 @@
                         <label for="diretor" class="form-label">Diretor:</label>
                         <select class="form-control" formControlName="diretor">
                             <option value="" selected>Selecione um Diretor...</option>
-                            <option *ngFor="let diretor of diretores$ | async">{{ diretor.nome }}
+                            <option *ngFor="let diretor of diretores$ | async" [ngValue]="diretor._id">{{ diretor.nome}}
                             </option>
                         </select>
                     </div>
@@ -51,10 +51,11 @@
 
                     <!-- Campo Atores -->
                     <div class="col">
-                        <label for="classe" class="form-label">Atores:</label>
-                        <select class="form-control" formControlName="classe" multiple data-live-search="true" size="2">
+                        <label for="ator" class="form-label">Atores:</label>
+                        <select class="form-control" formControlName="ator" multiple data-live-search="true" size="2">
                             <option value="" disabled>Selecione uma ou mais Atores...</option>
-                            <option *ngFor="let ator of atores$ | async" [value]="ator._id">{{ ator.nome }}</option>
+                            <option *ngFor="let ator of atores$ | async" [ngValue]="ator._id">{{ ator.nome }}
+                            </option>
                         </select>
                     </div>
                     <div class="col-auto d-flex align-items-end">
@@ -64,33 +65,20 @@
                     </div>
                 </div>
 
-                <!-- Linha 4: Classe / Itens -->
+                <!-- Linha 4: Classe -->
                 <div class="row mb-3">
                     <!-- Campo Classe -->
                     <div class="col">
                         <label for="classe" class="form-label">Classe:</label>
                         <select class="form-control" formControlName="classe">
                             <option value="" selected>Selecione uma Classe...</option>
-                            <option *ngFor="let classe of classes$ | async">{{ classe.nome }}</option>
+                            <option *ngFor="let classe of classes$ | async" [ngValue]="classe._id">{{ classe.nome }}
+                            </option>
                         </select>
                     </div>
                     <div class="col-auto d-flex align-items-end">
                         <button type="button" class="btn btn-outline-primary px-3" [routerLink]="['/classe/new']">
                             <i class="bi bi-bookmark-plus-fill"></i>
-                        </button>
-                    </div>
-
-                    <!-- Campo Item -->
-                    <div class="col">
-                        <label for="itens" class="form-label">Itens:</label>
-                        <select class="form-control" formControlName="itens" required>
-                            <option value="" selected>Selecione uma Item...</option>
-                            <option *ngFor="let item of itens$ | async" [value]="item._id">{{ item.tipoItem }}</option>
-                        </select>
-                    </div>
-                    <div class="col-auto d-flex align-items-end">
-                        <button type="button" class="btn btn-outline-primary px-3" [routerLink]="['/item/new']">
-                            <i class="bi bi-plus-square-fill"></i>
                         </button>
                     </div>
                 </div>

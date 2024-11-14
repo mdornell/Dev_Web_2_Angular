@@ -1,3 +1,6 @@
+import { Ator } from "./ator";
+import { Classe } from "./classe";
+import { Diretor } from "./diretor";
 
 export interface Titulo {
     _id: number;
@@ -5,7 +8,7 @@ export interface Titulo {
     ano: number;
     sinopse: string;
     categoria: string;
-    // diretores: Diretor;
-    // atores: Array<Ator>;
-    // classe: Classe;
+    ator: Array<Ator>;
+    diretor: Diretor;
+    classe: Classe;
 }

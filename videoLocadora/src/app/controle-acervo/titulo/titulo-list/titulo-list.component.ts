@@ -1,21 +1,21 @@
-import { NgFor, NgIf } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Titulo } from '../../../type/titulo';
 
 @Component({
-  selector: 'app-titulo-list',
-  standalone: true,
-  imports: [
-    NgIf,
-    NgFor
-  ],
-  templateUrl: './titulo-list.component.html',
-  styleUrl: './titulo-list.component.scss'
+    selector: 'app-titulo-list',
+    standalone: true,
+    imports: [
+        CommonModule,
+        RouterModule
+    ],
+    templateUrl: './titulo-list.component.html',
+    styleUrl: './titulo-list.component.scss'
 })
 export class TituloListComponent {
-    
-    @Input() titulos: Titulo[] = []
+
+    @Input() titulos: Titulo[] = [];
     @Output() tituloSelected: EventEmitter<Titulo> = new EventEmitter<Titulo>();
 
     constructor(

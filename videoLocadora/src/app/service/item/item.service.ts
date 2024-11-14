@@ -4,7 +4,7 @@ import { take } from 'rxjs';
 import { Item } from '../../type/item';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class ItemService {
 

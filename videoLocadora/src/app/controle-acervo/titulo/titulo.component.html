@@ -6,8 +6,7 @@
         </div>
         <div class="card mt-3">
             <app-titulo-list *ngIf="titulos$ | async as titulos; else loading" [titulos]="titulos"
-                (tituloSelected)="onSelected($event)">
-            </app-titulo-list>
+                (tituloSelected)="onSelected($event)"></app-titulo-list>
             <ng-template #loading>
                 <div class="d-flex justify-content-center my-3">
                     <div class="spinner-border text-primary" role="status">
@@ -30,7 +29,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Excluir</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                        (click)="onDelete()">Excluir</button>
                 </div>
             </div>
         </div>

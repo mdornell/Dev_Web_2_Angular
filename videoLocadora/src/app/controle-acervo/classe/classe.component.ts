@@ -1,4 +1,4 @@
-import { CommonModule, NgFor, NgIf } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -10,11 +10,9 @@ import { ClasseListComponent } from "./classe-list/classe-list.component";
     selector: 'app-classe',
     standalone: true,
     imports: [
-    NgFor,
-    NgIf,
-    CommonModule,
-    ClasseListComponent
-],
+        CommonModule,
+        ClasseListComponent
+    ],
     templateUrl: './classe.component.html',
     styleUrl: './classe.component.scss'
 })
@@ -22,13 +20,13 @@ export class ClasseComponent {
 
     classes$: Observable<Classe[]>; // Observable para carregar as classes
     classeSelected: Classe | null = null;
-   
+
 
     constructor(
         private classeService: ClasseService,
         private router: Router,
         private route: ActivatedRoute
-    ) { 
+    ) {
         this.classes$ = this.classeService.list();
     }
 
@@ -58,7 +56,7 @@ export class ClasseComponent {
         this.classeSelected = null;
     }
 
-    refresh(){
+    refresh() {
         this.classes$ = this.classeService.list();
     }
 }
